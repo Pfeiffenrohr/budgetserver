@@ -11,7 +11,7 @@ public class CategorieService {
 	
 		
 		@Autowired
-		private CategorieRepository CategorieRepository;
+		private CategorieRepository categorieRepository;
 
 		List<Categorie> Categories = new ArrayList<Categorie>();
 		
@@ -21,24 +21,24 @@ public class CategorieService {
 				
 		public List <Categorie> getAllCategories() {
 			List<Categorie> t = new ArrayList<Categorie>();
-			CategorieRepository.findAll().forEach(t::add);
+			categorieRepository.findAll().forEach(t::add);
 			return t;
 			//return Categories;
 		}
 		
 		public Categorie getCategorie(Integer id) {
-			return  CategorieRepository.findById((id)).orElse(new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1));
+			return  categorieRepository.findById((id)).orElse(new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1));
 		}
 		
-		public void addCategorie(Categorie Categorie)
+		public void addCategorie(Categorie categorie)
 		{
-			CategorieRepository.save(Categorie);
+			categorieRepository.save(categorie);
 		}
 		public void updateCategorie(Categorie trans) {
-			CategorieRepository.save(trans);
+			categorieRepository.save(trans);
 		}
 		public void deleteCategorie(int id) {
-			CategorieRepository.deleteById(id);
+			categorieRepository.deleteById(id);
 		}
 		
 	}
