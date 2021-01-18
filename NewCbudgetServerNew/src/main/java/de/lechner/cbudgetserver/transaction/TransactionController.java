@@ -45,6 +45,12 @@ public class TransactionController {
 		 return transactionservice.getTransaction(new Integer(id));
 	}
 	 
+	 @RequestMapping("/transactionbyname/{name}") 
+	 public List<Transaction>  getTransactionbyname(@PathVariable("name") String name) {
+		 return transactionservice.getTransactionByName(name);
+	}
+	 
+	 
 	 @RequestMapping(method=RequestMethod.POST, value="/transactions")
 	 public void addTransaction(@RequestBody Transaction transaction) {
 		 transactionservice.addTransaction(transaction);

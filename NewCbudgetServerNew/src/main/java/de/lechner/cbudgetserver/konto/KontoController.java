@@ -21,13 +21,13 @@ package de.lechner.cbudgetserver.konto;
 			return "hi";
 		}
 		
-		  @GetMapping(value = "/Kontos")
+		  @GetMapping(value = "/kontos")
 		public List <Konto> getAll() {
 			  return Kontoservice.getAllKontos();
 			
 		  }	
 		  
-		 @RequestMapping("/Konto/{id}") 
+		 @RequestMapping("/konto/{id}") 
 		 public Konto getKonto(@PathVariable("id") String id) {
 			 if (Kontoservice==null) {
 				 System.out.println("Kontoservice = null!!!!");
@@ -45,17 +45,17 @@ package de.lechner.cbudgetserver.konto;
 			 return Kontoservice.getKonto(new Integer(id));
 		}
 		 
-		 @RequestMapping(method=RequestMethod.POST, value="/Kontos")
-		 public void addKonto(@RequestBody Konto Konto) {
-			 Kontoservice.addKonto(Konto);
+		 @RequestMapping(method=RequestMethod.POST, value="/kontos")
+		 public void addKonto(@RequestBody Konto konto) {
+			 Kontoservice.addKonto(konto);
 		 }
 		 
-		 @RequestMapping(method=RequestMethod.PUT, value="/Kontos")
-		 public void updateKonto(@RequestBody Konto Konto) {
-			 Kontoservice.updateKonto(Konto);
+		 @RequestMapping(method=RequestMethod.PUT, value="/kontos")
+		 public void updateKonto(@RequestBody Konto konto) {
+			 Kontoservice.updateKonto(konto);
 		 }
 	    
-		 @RequestMapping(method=RequestMethod.DELETE,value="/Konto/{id}") 
+		 @RequestMapping(method=RequestMethod.DELETE,value="/konto/{id}") 
 		 public void deleteKonto(@PathVariable("id") String id) { 
 			 Kontoservice.deleteKonto(new Integer(id));	
 		 }

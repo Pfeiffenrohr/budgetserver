@@ -29,6 +29,10 @@ public class TransactionService {
 		return  transactionRepository.findById((id)).orElse(new Transaction(255,"nicht gefunden!!!!",6,3.2,"2020-03-03","partner","beschrenbbui",26,31,1,"n"));
 	}
 	
+	public List  <Transaction> getTransactionByName(String name) {
+		return  transactionRepository.findByName(name);  
+	}
+	
 	public void addTransaction(Transaction transaction)
 	{
 		transactionRepository.save(transaction);
