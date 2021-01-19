@@ -46,12 +46,18 @@ package de.lechner.cbudgetserver.bon;
 			 return bonService.getBon(new Integer(id));
 		}
 		 
-		 @RequestMapping(method=RequestMethod.POST, value="/bons")
+		 @RequestMapping("/bon_by_rawname/{name}") 
+		 public Bon getBonByRawname(@PathVariable("name") String name) {
+		
+			 return bonService.getBonByRawname(name);
+		}
+		 
+		 @RequestMapping(method=RequestMethod.POST, value="/bon")
 		 public void addBon(@RequestBody Bon bon) {
 			 bonService.addBon(bon);
 		 }
 		 
-		 @RequestMapping(method=RequestMethod.PUT, value="/bons")
+		 @RequestMapping(method=RequestMethod.PUT, value="/bon")
 		 public void updateBon(@RequestBody Bon bon) {
 			 bonService.updateBon(bon);
 		 }

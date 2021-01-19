@@ -45,18 +45,18 @@ public class TransactionController {
 		 return transactionservice.getTransaction(new Integer(id));
 	}
 	 
-	 @RequestMapping("/transactionbyname/{name}") 
-	 public List<Transaction>  getTransactionbyname(@PathVariable("name") String name) {
+	 @RequestMapping("/transaction_get_kategorie_byname/{name}") 
+	 public String getTransactionbyname(@PathVariable("name") String name) {
 		 return transactionservice.getTransactionByName(name);
 	}
 	 
 	 
-	 @RequestMapping(method=RequestMethod.POST, value="/transactions")
+	 @RequestMapping(method=RequestMethod.POST, value="/transaction")
 	 public void addTransaction(@RequestBody Transaction transaction) {
 		 transactionservice.addTransaction(transaction);
 	 }
 	 
-	 @RequestMapping(method=RequestMethod.PUT, value="/transactions")
+	 @RequestMapping(method=RequestMethod.PUT, value="/transaction")
 	 public void updateTransaction(@RequestBody Transaction transaction) {
 		 transactionservice.updateTransaction(transaction);
 	 }

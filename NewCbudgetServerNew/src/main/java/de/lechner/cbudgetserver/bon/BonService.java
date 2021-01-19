@@ -30,6 +30,10 @@ package de.lechner.cbudgetserver.bon;
 				return  bonRepository.findById((id)).orElse(new Bon(1,"Netto","Käse","Käse","Edam2",2));
 			}
 			
+			public Bon getBonByRawname(String  rawnameMutant) {
+				return  bonRepository.findByrawnameMutant(rawnameMutant);
+			}
+			
 			public void addBon(Bon bon)
 			{
 				bonRepository.save(bon);
