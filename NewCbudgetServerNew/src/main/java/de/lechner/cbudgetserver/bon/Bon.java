@@ -10,12 +10,12 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="Bon")
-@GenericGenerator(name = "native", strategy = "native")
+//@GenericGenerator(name = "native", strategy = "native")
 public class Bon {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	int id;
+	 int id;
 	String company;
 	String rawname;
 	String internalname;

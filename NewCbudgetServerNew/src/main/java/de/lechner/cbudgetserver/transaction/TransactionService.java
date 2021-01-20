@@ -35,6 +35,8 @@ public class TransactionService {
 	
 	public void addTransaction(Transaction transaction)
 	{
+		System.out.println("Save Transaction " + transaction.name + " "+ transaction.getDatum());
+		
 		transactionRepository.save(transaction);
 	}
 	public void updateTransaction(Transaction trans) {

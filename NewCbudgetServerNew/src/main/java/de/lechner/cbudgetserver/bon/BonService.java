@@ -31,17 +31,29 @@ package de.lechner.cbudgetserver.bon;
 			}
 			
 			public Bon getBonByRawname(String  rawnameMutant) {
+				rawnameMutant= rawnameMutant.replace("%20" , " ").replace("%2C", ",");
+				System.out.println("rawnameMutant = >" + rawnameMutant +"<");
+				
 				return  bonRepository.findByrawnameMutant(rawnameMutant);
 			}
 			
 			public void addBon(Bon bon)
 			{
+				//System.out.println("Add Bon " +bon.getRawnameMutant());
+				try {
+					//System.out.println("ID = "+bon.id );
+					//bon.setId(0);
+				bonRepository.save(bon);
+				}
+				catch (Exception e ) { e.fillInStackTrace();}
+			}
+			public void updateBon(Bon bon) {
+				//System.out.println("Update Bon " +bon.getRawnameMutant());
 				bonRepository.save(bon);
 			}
-			public void updateBon(Bon trans) {
-				bonRepository.save(trans);
-			}
 			public void deleteBon(int id) {
+
+				System.out.println("Add Bon " +id);
 				bonRepository.deleteById(id);
 			}
 			
