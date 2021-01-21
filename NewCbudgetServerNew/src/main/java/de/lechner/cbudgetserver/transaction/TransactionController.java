@@ -44,9 +44,13 @@ public class TransactionController {
 		 } 
 		 return transactionservice.getTransaction(new Integer(id));
 	}
+	 @RequestMapping("/transaction_by_kategorie/{kategorie}") 
+	 public List<Transaction> getTransactionByKategorie(@PathVariable("kategorie") Integer kategorie) {
+		 return transactionservice.getTransactionByKategorie(kategorie);
+	} 
 	 
 	 @RequestMapping("/transaction_get_kategorie_byname/{name}") 
-	 public String getTransactionbyname(@PathVariable("name") String name) {
+	 public String  getTransactionbyname(@PathVariable("name") String name) {
 		 return transactionservice.getTransactionByName(name);
 	}
 	 

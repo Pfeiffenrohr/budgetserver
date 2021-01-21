@@ -29,9 +29,16 @@ public class TransactionService {
 		return  transactionRepository.findById((id)).orElse(new Transaction(255,"nicht gefunden!!!!",6,3.2,"2020-03-03","partner","beschrenbbui",26,31,1,"n"));
 	}
 	
-	public String getTransactionByName(String name) {
+	public String  getTransactionByName(String name) {
+		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä");
+		System.out.println("Name >"+name+"<");
 		return  transactionRepository.findByName(name);  
 	}
+	
+	public List<Transaction> getTransactionByKategorie(Integer kategorie) {
+		return  transactionRepository.findByKategorie(kategorie);  
+	}
+	
 	
 	public void addTransaction(Transaction transaction)
 	{
