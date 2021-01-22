@@ -1,7 +1,7 @@
 cbudgetserver:  
   image: pfeiffenrohr/cbudgetserver:latest
   ports:
-    - "7777:7777"
+    - "8092:8092"
   restart: always
   environment:
       connectstring: jdbc:postgresql://192.168.2.29:5432/
