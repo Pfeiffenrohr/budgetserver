@@ -56,7 +56,7 @@ class KontoServiceTest {
 		.andExpect(MockMvcResultMatchers.content().string("hi"));
 		*/
 		mockMvc.perform(
-				MockMvcRequestBuilders.get("/Konto/2")
+				MockMvcRequestBuilders.get("/konto/2")
 				)
 		.andExpect(MockMvcResultMatchers.status().isOk());
 		
