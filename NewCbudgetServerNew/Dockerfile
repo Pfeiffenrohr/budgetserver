@@ -22,6 +22,4 @@ ADD target/NewCbudgetServerNew-0.0.1-SNAPSHOT.jar /var/lib/budgetserver/budgetse
 ADD scripts/budgetserver.sh /var/lib/budgetserver/budgetserver.sh
 RUN chmod 777 /var/lib/budgetserver/budgetserver.sh
 RUN dos2unix /var/lib/budgetserver/budgetserver.sh
-COPY lib/*.jar /var/lib/budgetserver/
-COPY target/lib/*.jar /var/lib/budgetserver/
 ENTRYPOINT ["/var/lib/budgetserver/budgetserver.sh"]
