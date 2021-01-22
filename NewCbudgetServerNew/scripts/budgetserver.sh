@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /var/lib/cbudgetserver
-/usr/bin/java -jar /var/lib/cbudgetbatch/budgetserver.jar
+/usr/bin/java -jar /var/lib/budgetbatch/budgetserver.jar
 
