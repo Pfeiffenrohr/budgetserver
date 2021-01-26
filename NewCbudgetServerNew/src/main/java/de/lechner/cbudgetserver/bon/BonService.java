@@ -31,7 +31,7 @@ package de.lechner.cbudgetserver.bon;
 			}
 			
 			public Bon getBonByRawname(String  rawnameMutant) {
-				rawnameMutant= rawnameMutant.replace("%20" , " ").replace("%2C", ",");
+				rawnameMutant= rawnameMutant.replace("%20" , " ").replace("%2C", ",").replace("%25", "%").replace("%26", "&");
 				System.out.println("rawnameMutant = >" + rawnameMutant +"<");
 				
 				return  bonRepository.findByrawnameMutant(rawnameMutant);
