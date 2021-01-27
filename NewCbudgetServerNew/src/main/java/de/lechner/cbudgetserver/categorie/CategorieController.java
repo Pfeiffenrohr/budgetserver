@@ -34,14 +34,7 @@ package de.lechner.cbudgetserver.categorie;
 				 return (new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1));		
 			 }
 				 Categorie trans = Categorieservice.getCategorie(new Integer(id));
-			 if (Categorieservice==null)
-			 {
-				 System.out.println("Categorie = null");
-			 }
-			 else
-			 {
-				 System.out.println("Categorie = found");
-			 } 
+			 
 			 return Categorieservice.getCategorie(new Integer(id));
 		}
 		 

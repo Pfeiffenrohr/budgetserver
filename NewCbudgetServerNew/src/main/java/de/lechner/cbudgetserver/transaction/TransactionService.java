@@ -31,7 +31,6 @@ public class TransactionService {
 	
 	public String  getTransactionByName(String name) {
 		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä");
-		System.out.println("Name >"+name+"<");
 		return  transactionRepository.findByName(name);  
 	}
 	
@@ -42,7 +41,6 @@ public class TransactionService {
 	
 	public void addTransaction(Transaction transaction)
 	{
-		System.out.println("Save Transaction " + transaction.name + " "+ transaction.getDatum());
 		
 		transactionRepository.save(transaction);
 	}

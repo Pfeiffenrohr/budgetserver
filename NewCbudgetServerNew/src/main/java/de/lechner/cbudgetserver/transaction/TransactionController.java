@@ -30,18 +30,11 @@ public class TransactionController {
 	 @RequestMapping("/transaction/{id}") 
 	 public Transaction getTransaction(@PathVariable("id") String id) {
 		 if (transactionservice==null) {
-			 System.out.println("transactionservice = null!!!!");
+			 System.err.println("transactionservice = null!!!!");
 			 return (new Transaction(255,"name2",6,3.2,"2020-03-03","partner","beschrenbbui",26,31,1,"n"));		
 		 }
 			 Transaction trans = transactionservice.getTransaction(new Integer(id));
-		 if (transactionservice==null)
-		 {
-			 System.out.println("Transaktion = null");
-		 }
-		 else
-		 {
-			 System.out.println("Transaktion = found");
-		 } 
+		
 		 return transactionservice.getTransaction(new Integer(id));
 	}
 	 @RequestMapping("/transaction_by_kategorie/{kategorie}") 

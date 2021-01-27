@@ -34,14 +34,6 @@ package de.lechner.cbudgetserver.konto;
 				 return (new Konto());		
 			 }
 				 Konto trans = Kontoservice.getKonto(new Integer(id));
-			 if (Kontoservice==null)
-			 {
-				 System.out.println("Transaktion = null");
-			 }
-			 else
-			 {
-				 System.out.println("Transaktion = found");
-			 } 
 			 return Kontoservice.getKonto(new Integer(id));
 		}
 		 
