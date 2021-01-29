@@ -1,17 +1,26 @@
 package de.lechner.cbudgetserver.transaction;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import de.lechner.cbudgetserver.transactionhistory.TransactionHistory;
+import de.lechner.cbudgetserver.transactionhistory.TransactionHistoryService;
 
 @Service
 public class TransactionService {
 	
 	@Autowired
 	private TransactionRepository transactionRepository;
-
+	
+	@Autowired
+	private TransactionHistoryService transactionHistoryService;
+ 
 	List<Transaction> transactions = new ArrayList<Transaction>();
 	
 	public String greeting(String str) {
@@ -31,7 +40,6 @@ public class TransactionService {
 	
 	public String  getTransactionByName(String name) {
 		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä");
-		System.out.println("Name >"+name+"<");
 		return  transactionRepository.findByName(name);  
 	}
 	
@@ -41,10 +49,19 @@ public class TransactionService {
 	
 	
 	public void addTransaction(Transaction transaction)
-	{
-		System.out.println("Save Transaction " + transaction.name + " "+ transaction.getDatum());
-		
+	{		
+		 Date date = Calendar.getInstance().getTime(); 
 		transactionRepository.save(transaction);
+		//Insert TransactionHistory
+		TransactionHistory transactionhistory = new TransactionHistory();
+		transactionhistory.setTrans_id(transaction.getId());
+		transactionhistory.setType(0);
+		transactionhistory.setDatum(new SimpleDateFormat("yyyy-MM-dd").format(date));
+		transactionhistory.setZeit(new SimpleDateFormat("HH:mm:ss").format(date));
+		transactionhistory.setCurruser("budgetserver");
+		
+		transactionHistoryService.addTransactionHistory(transactionhistory);
+		
 	}
 	public void updateTransaction(Transaction trans) {
 		transactionRepository.save(trans);
