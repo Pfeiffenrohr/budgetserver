@@ -63,8 +63,19 @@ public class TransactionService {
 		transactionHistoryService.addTransactionHistory(transactionhistory);
 		
 	}
-	public void updateTransaction(Transaction trans) {
-		transactionRepository.save(trans);
+	public void updateTransaction(Transaction transaction) {
+		transactionRepository.save(transaction);
+		 Date date = Calendar.getInstance().getTime(); 
+			transactionRepository.save(transaction);
+			//Insert TransactionHistory
+			TransactionHistory transactionhistory = new TransactionHistory();
+			transactionhistory.setTrans_id(transaction.getId());
+			transactionhistory.setType(1);
+			transactionhistory.setDatum(new SimpleDateFormat("yyyy-MM-dd").format(date));
+			transactionhistory.setZeit(new SimpleDateFormat("HH:mm:ss").format(date));
+			transactionhistory.setCurruser("budgetserver");
+			
+			transactionHistoryService.addTransactionHistory(transactionhistory);
 	}
 	public void deleteTransaction(int id) {
 		transactionRepository.deleteById(id);
