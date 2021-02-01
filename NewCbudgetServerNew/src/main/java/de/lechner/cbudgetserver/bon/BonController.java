@@ -35,14 +35,7 @@ package de.lechner.cbudgetserver.bon;
 				 return (new Bon(1,"Netto","Käse","Käse","Edam2",2));		
 			 }
 				 Bon trans = bonService.getBon(new Integer(id));
-			 if (bonService==null)
-			 {
-				 System.out.println("Bon = null");
-			 }
-			 else
-			 {
-				 System.out.println("Bon = found");
-			 } 
+			
 			 return bonService.getBon(new Integer(id));
 		}
 		 
