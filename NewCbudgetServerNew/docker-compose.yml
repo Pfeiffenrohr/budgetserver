@@ -1,0 +1,8 @@
+cbudgetserver:  
+  image: pfeiffenrohr/cbudgetserver:latest
+  ports:
+    - "8092:8092"
+  restart: always
+  environment:
+      databaseurl: jdbc:postgresql://192.168.2.29:5432/budget
+     

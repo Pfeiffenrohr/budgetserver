@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +13,8 @@ import javax.persistence.Table;
 @Table(name="transaktionen")
 public class Transaction {
 	
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Integer id;
 	String name;
 	Integer konto_id;
@@ -84,7 +87,7 @@ public class Transaction {
 		this.wert = wert;
 	}
 	public String getDatum() {
-		return   new SimpleDateFormat("yyyy-mm-dd").format(datum);
+		return   new SimpleDateFormat("yyyy-MM-dd").format(datum);
 	}
 	public void setDatum(String datum) {
 		try {
