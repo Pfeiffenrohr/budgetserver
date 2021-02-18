@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,19 @@ public class TransactionService {
 		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä").replace("%2F", "/");
 		return  transactionRepository.findByName(name);  
 	}
+	
+	public String  getTransactionSum(Map<String,String> params) {
+		String datum=params.get("datum");
+		String categorie = params.get("categorie");
+		try {
+		return  transactionRepository.findSumByMonth(new SimpleDateFormat("yyyy-MM-dd").parse(datum),new Integer(categorie));
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			return "";
+		}
+	}
+	
 	
 	public List<Transaction> getTransactionByKategorie(Integer kategorie) {
 		return  transactionRepository.findByKategorie(kategorie);  
