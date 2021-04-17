@@ -3,3 +3,7 @@ Ordne allen transaktionen eine TransaktionHistory zu
 insert into transaktion_history(trans_id,type,datum,zeit,curruser) 
  select   transaktionen.id,0,transaktionen.datum,'00:00:00','budgetserver'
 from  transaktionen where transaktionen.id not in (select trans_id from transaktion_history);
+
+Lösche Leerzeichen am Anfang 
+
+update bon  SET rawname_mutant = RIGHT(rawname_mutant, LENGTH(rawname_mutant) - 1);
