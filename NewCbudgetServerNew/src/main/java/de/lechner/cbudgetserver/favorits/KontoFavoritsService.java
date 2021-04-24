@@ -19,9 +19,10 @@ public class KontoFavoritsService {
 	return "Hi";
 	}
 			
-	public List <KontoFavorits> getAllKontoFavoritss() {
-		List<KontoFavorits> t = new ArrayList<KontoFavorits>();
-		KontoFavoritsRepository.findAll().forEach(t::add);
+	public List <KontoFavorits> getAllKontoFavorits() {
+		//List<KontoFavorits> t = new ArrayList<KontoFavorits>();
+		//KontoFavoritsRepository.findAll().forEach(t::add);
+		List<KontoFavorits> t= KontoFavoritsRepository.findKontoFavoritsSorted();
 		return t;
 		//return KontoFavoritss;
 	}

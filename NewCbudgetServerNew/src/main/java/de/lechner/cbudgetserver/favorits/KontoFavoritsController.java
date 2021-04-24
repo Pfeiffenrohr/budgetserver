@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.lechner.cbudgetserver.konto.Konto;
+
 @RestController
 public class KontoFavoritsController {
 	
@@ -33,12 +35,19 @@ public class KontoFavoritsController {
 		 return kontoFavoritService.getKontoFavorits(new Integer(id));
 	}
 	 
+	 
+	  @GetMapping(value = "/kontoFavorits")
+			public List <KontoFavorits> getAll() {
+				  return kontoFavoritService.getAllKontoFavorits();
+				
+			  }	
+	 
 	 @RequestMapping(method=RequestMethod.POST, value="/kontoFavorit")
 	 public void addKontoFavorit(@RequestBody KontoFavorits kontoFavorits) {
 		 kontoFavoritService.addKontoFavorits(kontoFavorits);
 	 }
 	 
-	 @RequestMapping(method=RequestMethod.PUT, value="/kontosFavorit")
+	 @RequestMapping(method=RequestMethod.PUT, value="/kontoFavorit")
 	 public void updateKonto(@RequestBody KontoFavorits konto) {
 		 kontoFavoritService.updateKontoFavorits(konto);
 	 }
