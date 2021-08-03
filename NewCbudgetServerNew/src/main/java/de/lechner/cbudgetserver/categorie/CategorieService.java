@@ -27,7 +27,7 @@ public class CategorieService {
 		}
 		
 		public Categorie getCategorie(Integer id) {
-			return  categorieRepository.findById((id)).orElse(new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1));
+			return  categorieRepository.findById((id)).orElse(new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1,0));
 		}
 		
 		public void addCategorie(Categorie categorie)

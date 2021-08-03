@@ -31,7 +31,7 @@ package de.lechner.cbudgetserver.categorie;
 		 public Categorie getCategorie(@PathVariable("id") String id) {
 			 if (Categorieservice==null) {
 				 System.out.println("Categorieservice = null!!!!");
-				 return (new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1));		
+				 return (new Categorie(255,"name2","parent","descripton",3000.0,3000.0,"m",1,1,0));		
 			 }
 				 Categorie trans = Categorieservice.getCategorie(new Integer(id));
 			 
