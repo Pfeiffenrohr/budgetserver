@@ -18,11 +18,12 @@ public class Categorie {
 	private String mode;
 	private Integer active;
 	private Integer forecast;
+	private Integer inflation;
 	
 	
 	
 	public Categorie(Integer id, String name, String parent, String description, Double limit_month, Double limit_year, String mode,
-			Integer active, Integer forecast) {
+			Integer active, Integer forecast, Integer inflation) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -33,6 +34,7 @@ public class Categorie {
 		this.mode = mode;
 		this.active = active;
 		this.forecast = forecast;
+		this.inflation = inflation;
 	}
 	
 
@@ -41,6 +43,20 @@ public class Categorie {
 		
 	}
 	
+	
+	
+	public Integer getInflation() {
+		return inflation;
+	}
+
+
+
+	public void setInflation(Integer inflation) {
+		this.inflation = inflation;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
