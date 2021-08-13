@@ -29,6 +29,11 @@ package de.lechner.cbudgetserver.konto;
 			return  KontoRepository.findById((id)).orElse(new Konto(255,"name3","y",4000.0,2000.0,"desc","mode"));
 		}
 		
+		public Integer getKontoByName(String name) {
+			return  KontoRepository.findByName((name));
+		}
+		
+		
 		public void addKonto(Konto Konto)
 		{
 			KontoRepository.save(Konto);
