@@ -36,6 +36,14 @@ package de.lechner.cbudgetserver.konto;
 				 Konto trans = Kontoservice.getKonto(new Integer(id));
 			 return Kontoservice.getKonto(new Integer(id));
 		}
+		 @RequestMapping("/kontoByName/{name}") 
+		 public Integer getKontoByName(@PathVariable("name") String name) {
+			 if (Kontoservice==null) {
+				 System.out.println("Kontoservice = null!!!!");
+				 return (0);		
+			 }
+			 return Kontoservice.getKontoByName(name);
+		} 
 		 
 		 @RequestMapping(method=RequestMethod.POST, value="/kontos")
 		 public void addKonto(@RequestBody Konto konto) {
