@@ -53,12 +53,25 @@ public class TransactionService {
 		String enddatum=params.get("enddate");
 		String categorie = params.get("categorie");
 		String konto = params.get("konto");
+		
 		try {
-			 return transactionRepository.findSumMonth(
+		    if (categorie!=null)
+	        {
+	            
+	        
+			 return transactionRepository.findSumMonthWithCategorie(
 					new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
 					new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
 					new Integer(categorie),
 					new Integer(konto));
+	        }
+		    else
+		    {
+	             return transactionRepository.findSumMonth(
+	                     new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
+	                     new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
+	                     new Integer(konto));
+		    }
 		} catch (Exception e)
 		{
 			e.printStackTrace();
