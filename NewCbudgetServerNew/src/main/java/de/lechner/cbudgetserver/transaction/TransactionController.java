@@ -54,7 +54,7 @@ public class TransactionController {
 	 
 	 @RequestMapping("/transaction_get_sum")
 	 @ResponseBody
-	 public String getTransactrionSum(@RequestParam Map<String,String> allParams) {
+	 public String getTransactrionSum(@RequestParam  Map<String,String> allParams) {
 		 return  transactionservice.getTransactionSum(allParams);
 	     //return "Parameters are " + allParams.entrySet();
 	 }
