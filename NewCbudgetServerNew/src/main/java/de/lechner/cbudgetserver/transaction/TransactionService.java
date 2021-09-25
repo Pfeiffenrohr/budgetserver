@@ -43,7 +43,7 @@ public class TransactionService {
 	}
 	
 	public String  getTransactionByName(String name) {
-		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä").replace("%2F", "/");
+		name= name.replace("%20" , " ").replace("%2C", ",").replace("%C3%A4", "ä").replace("%2F", "/").replace("%21", "!");
 		return  transactionRepository.findByName(name);  
 	}
 	
