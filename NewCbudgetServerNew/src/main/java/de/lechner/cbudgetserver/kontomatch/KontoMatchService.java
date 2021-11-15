@@ -13,6 +13,7 @@ public class KontoMatchService {
 	
 	
 	public String getKontoMatchByName(String name) {
+		//System.out.println("Name = "+name);
 		return  kontoMatchRepository.findByName((name));
 	}
 }
