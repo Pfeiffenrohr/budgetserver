@@ -32,6 +32,12 @@ public class TransactionController {
 		
 	  }	
 	  
+	  @GetMapping(value = "/transaction_allErtrag")
+	    public List <Transaction> getFiltered() {
+	          return transactionservice.getAllErtrag();
+	        
+	      } 
+	  
 	 @RequestMapping("/transaction/{id}") 
 	 public Transaction getTransaction(@PathVariable("id") String id) {
 		 if (transactionservice==null) {
