@@ -169,31 +169,7 @@ public class TransactionService {
     };
  
     
-    Specification<Transaction> specRendite = new Specification<Transaction>() {
-        @Override
-        public Predicate toPredicate(Root<Transaction> entity, CriteriaQuery<?> query, CriteriaBuilder cb) {  
-            try {
-            Predicate predErtrag = cb.equal(entity.get("name"), "Ertrag");
-            Predicate predKonto = cb.equal(entity.get("konto"), new Integer(konto));
-            Predicate predStartdate = cb.greaterThan(entity.get("datum"),new SimpleDateFormat("yyyy-MM-dd").parse(startdatum));
-            Predicate predEnddate = cb.lessThan(entity.get("datum"),new SimpleDateFormat("yyyy-MM-dd").parse(enddatum));
-            Predicate preAll = cb.and(predErtrag,predKonto,predStartdate,predEnddate);
-            query.select(
-                    cb.sum(entity.get("wert"))
-                    
-                    ).where(preAll);
-           
-            return query.getRestriction();
-            } catch (Exception e)
-            {
-                e.printStackTrace();
-                
-              return null;
-            
-            }
-        }
-       
-    };
+   
     
 }
 
