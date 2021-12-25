@@ -1,9 +1,11 @@
 package de.lechner.cbudgetserver.rendite;
 
-	import java.util.ArrayList;
+	import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 	import java.util.List;
+import java.util.Map;
 
-	import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
 
 	@Service
@@ -28,6 +30,21 @@ package de.lechner.cbudgetserver.rendite;
 		public Rendite getRendite(Integer id) {
 			return  renditeRepository.findById((id)).orElse(new Rendite());
 		}
+		
+		public Rendite findByDateAndKonto(Map<String,String> params) {
+			String  datum=params.get("date");
+			String konto = params.get("konto");
+			try {
+			return  renditeRepository.findByDateAndKonto(new SimpleDateFormat("yyyy-MM-dd").parse(datum), new Integer(konto));
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+				
+			  return null;
+			
+			}
+			
+			}
 		
 		public void addRendite(Rendite rendite)
 		{

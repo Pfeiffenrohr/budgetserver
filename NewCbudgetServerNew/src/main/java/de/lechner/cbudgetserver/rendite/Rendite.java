@@ -3,14 +3,18 @@ package de.lechner.cbudgetserver.rendite;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+
 @Table(name="Rendite")
 public class Rendite {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private Integer konto;
 	private Double value;
