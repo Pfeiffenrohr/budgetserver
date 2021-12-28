@@ -7,7 +7,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -26,6 +32,9 @@ public class TransactionService {
 	private TransactionHistoryService transactionHistoryService;
  
 	List<Transaction> transactions = new ArrayList<Transaction>();
+	private String konto;
+	private String startdatum;
+	private String enddatum;
 	
 	public String greeting(String str) {
 	return "Hi";
@@ -38,6 +47,12 @@ public class TransactionService {
 		//return transactions;
 	}
 	
+	public List <Transaction> getAllErtrag() {
+        List<Transaction> t = new ArrayList<Transaction>();
+        t = transactionRepository.findAll(specErtrag);
+        return t;
+        //return transactions;
+    }
 	public Transaction getTransaction(Integer id) {
 		return  transactionRepository.findById((id)).orElse(new Transaction(255,"nicht gefunden!!!!",6,3.2,"2020-03-03","partner","beschrenbbui",26,31,1,"n"));
 	}
@@ -53,8 +68,21 @@ public class TransactionService {
 		String enddatum=params.get("enddate");
 		String categorie = params.get("categorie");
 		String konto = params.get("konto");
+		String name = params.get("name");
 		
 		try {
+		    
+		    if (name != null)
+		    {
+		        return transactionRepository.findSumMonthWithName(
+	                    new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
+	                    new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
+	                    new Integer(categorie),
+	                    new String(name),
+	                    new Integer(konto));
+	             
+		    }
+		    
 		    if (categorie!=null)
 	        {
 	            
@@ -72,6 +100,7 @@ public class TransactionService {
 	                     new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
 	                     new Integer(konto));
 		    }
+		    
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -81,6 +110,8 @@ public class TransactionService {
 		}
 		
 	}
+	
+
 	
 	
 	public List<Transaction> getTransactionByKategorie(Integer kategorie) {
@@ -121,5 +152,24 @@ public class TransactionService {
 		transactionRepository.deleteById(id);
 	}
 	
+	   
+    Specification<Transaction> specErtrag = new Specification<Transaction>() {
+        @Override
+        public Predicate toPredicate(Root<Transaction> entity, CriteriaQuery<?> query, CriteriaBuilder cb) {                
+            List<Predicate> conditions = ertragPredicate(cb, entity);
+            return cb.and(conditions.toArray(new Predicate[conditions.size()]));
+        }
+        
+        List<Predicate> ertragPredicate(CriteriaBuilder cb, Root<Transaction> entity) {
+            List<Predicate> listPredicate = new ArrayList<Predicate>();
+            Predicate ertrag = cb.equal(entity.get("name"), "Ertrag");
+            listPredicate.add(ertrag);
+            return listPredicate;
+        }
+    };
+ 
+    
+   
+    
 }
 
