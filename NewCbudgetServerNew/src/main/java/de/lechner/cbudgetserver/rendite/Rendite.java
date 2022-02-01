@@ -20,19 +20,21 @@ public class Rendite {
 	private Double value;
 	private Date datum;
 	private Double amount;
+	private Integer dirty;
 	
 	
 	
     public Rendite() {
        
     }
-    public Rendite(Integer id, Integer konto, Double value, Date datum, Double amount) {
+    public Rendite(Integer id, Integer konto, Double value, Date datum, Double amount, Integer dirty) {
         super();
         this.id = id;
         this.konto = konto;
         this.value = value;
         this.datum = datum;
         this.amount = amount;
+        this.dirty = dirty;
     }
     public Integer getId() {
         return id;
@@ -63,6 +65,12 @@ public class Rendite {
     }
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+    public Integer getDirty() {
+        return dirty;
+    }
+    public void setDirty(Integer dirty) {
+        this.dirty = dirty;
     }
     	
 
