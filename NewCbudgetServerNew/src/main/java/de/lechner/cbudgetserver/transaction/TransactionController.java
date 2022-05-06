@@ -60,7 +60,7 @@ public class TransactionController {
 	 
 	 @RequestMapping("/transaction_get_sum")
 	 @ResponseBody
-	 public String getTransactrionSum(@RequestParam Map<String,String> allParams) {
+	 public String getTransactionSum(@RequestParam Map<String,String> allParams) {
 		 String result= transactionservice.getTransactionSum(allParams);
 		// System.out.println("Result = " +result);
 		 return  result;

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
+import de.lechner.cbudgetserver.QueryBuilder.BuildQueryForTransaction;
 import de.lechner.cbudgetserver.transactionhistory.TransactionHistory;
 import de.lechner.cbudgetserver.transactionhistory.TransactionHistoryService;
 
@@ -30,6 +31,9 @@ public class TransactionService {
 	
 	@Autowired
 	private TransactionHistoryService transactionHistoryService;
+	
+	@Autowired
+    private BuildQueryForTransaction queryBuilder;
  
 	List<Transaction> transactions = new ArrayList<Transaction>();
 	private String konto;
@@ -69,6 +73,7 @@ public class TransactionService {
 		String categorie = params.get("categorie");
 		String konto = params.get("konto");
 		String name = params.get("name");
+		String ruleid = params.get("ruleid");
 		
 		try {
 		    
@@ -93,6 +98,26 @@ public class TransactionService {
 					new Integer(categorie),
 					new Integer(konto));
 	        }
+		    
+		    if (ruleid != null)
+            {
+		        
+		        if (konto != null)
+		            {
+		             return queryBuilder.buildQuery(new Integer(ruleid),startdatum,enddatum,new Integer(konto));
+		            }
+		        else
+		        {
+		            return queryBuilder.buildQuery(new Integer(ruleid),startdatum,enddatum);
+		        }
+                /*return transactionRepository.findSumMonthWithName(
+                        new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
+                        new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
+                        new Integer(categorie),
+                        new String(name),
+                        new Integer(konto));*/
+                 
+            }
 		    else
 		    {
 	             return transactionRepository.findSumMonth(

@@ -13,5 +13,9 @@ public class RuleService {
     public String getModeByRuleId(Integer ruleId) {
         return  ruleRepository.findModeByRuleId(ruleId);
     }
+    
+    public String getCopmmandByRuleId(Integer ruleId) {
+        return  ruleRepository.findCommandByRuleId(ruleId);
+    }
 
 }

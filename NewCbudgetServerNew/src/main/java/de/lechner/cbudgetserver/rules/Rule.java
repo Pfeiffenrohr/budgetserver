@@ -11,16 +11,18 @@ public class Rule {
     @Id
     private Integer id;
     private Integer rule_id;
+    private String command;
     private String mode;
     
     
-    public Rule(Integer id, Integer rule_id, String mode) {
+    public Rule(Integer id, Integer rule_id, String command, String mode) {
         super();
         this.id = id;
         this.rule_id = rule_id;
+        this.command = command;
         this.mode = mode;
     }
-    
+
     public Rule() {
         
     }
@@ -48,7 +50,13 @@ public class Rule {
     public void setMode(String mode) {
         this.mode = mode;
     }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
    
-    
- 
 }
