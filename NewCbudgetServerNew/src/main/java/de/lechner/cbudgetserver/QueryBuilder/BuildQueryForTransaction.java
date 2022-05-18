@@ -30,17 +30,26 @@ public class BuildQueryForTransaction {
     public String buildQuery(Integer ruleId, String startdate, String enddate,Integer konto) {
         em.getEntityManagerFactory();
         String command = ruleService.getCopmmandByRuleId(ruleId);
+        if (command==null)
+        {
+            //Setze dummy
+            command=" 1 =1 ";
+        }
         // Transaction transaction = em.find(Transaction.class);
         // LOG.info("Query Where Command: "+command);
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Transaction> cq = cb.createQuery(Transaction.class);
         String query = "Select sum(wert) from Transaction where datum > '" + startdate + "' and datum < '" + enddate
                 + "' and konto_id = " + konto + " and " + command;
-        // System.out.println(query);
+        //System.out.println(query);
+        
         Query q = em.createQuery(query);
         Double result = (Double) q.getSingleResult();
-        // System.out.println(result);
-
+         System.out.println("BuildQuery mit konto");
+        if (result==null)
+        {
+            result=0.0;
+        }
         return result.toString();
         /*
          * Root <Transaction> trans = cq.from(Transaction.class);
@@ -69,14 +78,21 @@ public class BuildQueryForTransaction {
         em.getEntityManagerFactory();
         String command = ruleService.getCopmmandByRuleId(ruleId);
         // Transaction transaction = em.find(Transaction.class);
-        // LOG.info("Query Where Command: "+command);
+       // LOG.info("Query Where Command: "+command);
+        System.out.println("BuildQuery ohne konto");
+        if (command==null)
+        {
+            //Setze dummy
+            command=" 1 =1 ";
+        }
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Transaction> cq = cb.createQuery(Transaction.class);
         String query = "Select sum(wert) from Transaction where datum > '" + startdate + "' and datum < '" + enddate
                 + "' and " + command;
+        LOG.info("Command: "+query);
         Query q = em.createQuery(query);
         Double result = (Double) q.getSingleResult();
-
+         
         return result.toString();
       
     }

@@ -16,20 +16,24 @@ public class Konto {
 	private Double lowerlimit;
 	private String description;
 	private String mode;
+	private Integer rule_id; 
 	
+
 	
-	
-	
-	public Konto(Integer id, String kontoname, String hidden,  Double upperlimit, Double lowerlimit, String description, String mode) {
-		super();
-		this.id = id;
-		this.kontoname = kontoname;
-		this.hidden = hidden;
-		this.upperlimit = upperlimit;
-		this.lowerlimit = lowerlimit;
-		this.description = description;
-		this.mode = mode;
-	}
+	public Konto(Integer id, String kontoname, String hidden, Double upperlimit, Double lowerlimit, String description,
+            String mode, Integer rule_id) {
+        super();
+        this.id = id;
+        this.kontoname = kontoname;
+        this.hidden = hidden;
+        this.upperlimit = upperlimit;
+        this.lowerlimit = lowerlimit;
+        this.description = description;
+        this.mode = mode;
+        this.rule_id = rule_id;
+    }
+
+
 	
 	public Konto() {
 		
@@ -81,7 +85,12 @@ public class Konto {
 		this.mode = mode;
 	}
 
-	
-	
+    public Integer getRule_id() {
+        return rule_id;
+    }
+
+    public void setRule_id(Integer rule_id) {
+        this.rule_id = rule_id;
+    }
 
 }

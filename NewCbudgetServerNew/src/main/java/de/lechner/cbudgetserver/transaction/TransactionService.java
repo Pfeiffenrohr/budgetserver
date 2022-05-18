@@ -74,11 +74,11 @@ public class TransactionService {
 		String konto = params.get("konto");
 		String name = params.get("name");
 		String ruleid = params.get("ruleid");
-		
 		try {
 		    
 		    if (name != null)
 		    {
+		        //System.out.println("select sum(wert) as summe from transaktionen where (datum >='" + startdatum+"' and datum <='"+enddatum+"') and  name='"+name+"' and kategorie= '"+categorie+"' and  konto_id= "+konto);
 		        return transactionRepository.findSumMonthWithName(
 	                    new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
 	                    new SimpleDateFormat("yyyy-MM-dd").parse(enddatum),
@@ -101,7 +101,6 @@ public class TransactionService {
 		    
 		    if (ruleid != null)
             {
-		        
 		        if (konto != null)
 		            {
 		             return queryBuilder.buildQuery(new Integer(ruleid),startdatum,enddatum,new Integer(konto));
