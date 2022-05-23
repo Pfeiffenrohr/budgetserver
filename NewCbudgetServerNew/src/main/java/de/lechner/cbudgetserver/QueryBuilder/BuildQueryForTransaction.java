@@ -45,7 +45,7 @@ public class BuildQueryForTransaction {
         
         Query q = em.createQuery(query);
         Double result = (Double) q.getSingleResult();
-         System.out.println("BuildQuery mit konto");
+        // System.out.println("BuildQuery mit konto");
         if (result==null)
         {
             result=0.0;
@@ -89,7 +89,7 @@ public class BuildQueryForTransaction {
         CriteriaQuery<Transaction> cq = cb.createQuery(Transaction.class);
         String query = "Select sum(wert) from Transaction where datum > '" + startdate + "' and datum < '" + enddate
                 + "' and " + command;
-        LOG.info("Command: "+query);
+        //LOG.info("Command: "+query);
         Query q = em.createQuery(query);
         Double result = (Double) q.getSingleResult();
          
