@@ -79,7 +79,7 @@ public class BuildQueryForTransaction {
         String command = ruleService.getCopmmandByRuleId(ruleId);
         // Transaction transaction = em.find(Transaction.class);
        // LOG.info("Query Where Command: "+command);
-        System.out.println("BuildQuery ohne konto");
+       // System.out.println("BuildQuery ohne konto");
         if (command==null)
         {
             //Setze dummy
@@ -92,6 +92,11 @@ public class BuildQueryForTransaction {
         //LOG.info("Command: "+query);
         Query q = em.createQuery(query);
         Double result = (Double) q.getSingleResult();
+        
+        if ( result == null) {
+           // System.out.println(query);
+            result=0.0;
+        }
          
         return result.toString();
       
