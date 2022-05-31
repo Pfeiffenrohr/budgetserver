@@ -39,7 +39,7 @@ public class BuildQueryForTransaction {
         // LOG.info("Query Where Command: "+command);
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Transaction> cq = cb.createQuery(Transaction.class);
-        String query = "Select sum(wert) from Transaction where datum > '" + startdate + "' and datum < '" + enddate
+        String query = "Select sum(wert) from Transaction where datum >= '" + startdate + "' and datum <= '" + enddate
                 + "' and konto_id = " + konto + " and " + command;
         //System.out.println(query);
         
@@ -87,7 +87,7 @@ public class BuildQueryForTransaction {
         }
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Transaction> cq = cb.createQuery(Transaction.class);
-        String query = "Select sum(wert) from Transaction where datum > '" + startdate + "' and datum < '" + enddate
+        String query = "Select sum(wert) from Transaction where datum >= '" + startdate + "' and datum <= '" + enddate
                 + "' and " + command;
         //LOG.info("Command: "+query);
         Query q = em.createQuery(query);
