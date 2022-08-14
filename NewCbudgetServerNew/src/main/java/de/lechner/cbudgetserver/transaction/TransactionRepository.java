@@ -27,7 +27,10 @@ public interface TransactionRepository extends CrudRepository<Transaction, Integ
 	
 	@Query(value= "select sum(wert) as summe from transaktionen where (datum >=:startdatum and datum <=:enddatum) and konto_id=:konto",nativeQuery = true )
     String findSumMonth(@Param("startdatum") Date startdatum,@Param("enddatum") Date enddatum,@Param("konto") Integer konto);
-	
+
+	@Query(value= "select * from transaktionen where (datum >=:startdatum and datum <=:enddatum)" ,nativeQuery = true )
+	//@Query(value= "select sum(wert) as w from transaktionen where (datum >=:startdatum and datum <=:enddatum);
+	List <Transaction> findTransactionByDatum (@Param("startdatum") Date startdatum,@Param("enddatum") Date enddatum);
 	
 	List<Transaction> findByKategorie(Integer kategorie);
 		     

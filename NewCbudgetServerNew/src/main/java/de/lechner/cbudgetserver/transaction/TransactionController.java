@@ -1,5 +1,6 @@
 package de.lechner.cbudgetserver.transaction;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -30,9 +31,17 @@ public class TransactionController {
 	public List <Transaction> getAll() {
 		  return transactionservice.getAllTransactions();
 		
-	  }	
-	  
-	  @GetMapping(value = "/transaction_allErtrag")
+	  }
+
+	@RequestMapping("/transactionWithDate")
+	@ResponseBody
+	public List <Transaction> getTransactionWithDate(@RequestParam Map<String,String> allParams) throws ParseException {
+		List <Transaction> result= transactionservice.getTransactionWithDate(allParams);
+		// System.out.println("Result = " +result);
+		return  result;
+		//return "Parameters are " + allParams.entrySet();
+	}
+	@GetMapping(value = "/transaction_allErtrag")
 	    public List <Transaction> getFiltered() {
 	          return transactionservice.getAllErtrag();
 	        
