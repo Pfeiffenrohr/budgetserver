@@ -1,5 +1,6 @@
 package de.lechner.cbudgetserver.transaction;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -66,7 +67,13 @@ public class TransactionService {
 		return  transactionRepository.findByName(name);  
 	}
 	
-
+    public List <Transaction> getTransactionWithDate (Map<String,String> params) throws ParseException {
+		String startdatum=params.get("startdate");
+		String enddatum=params.get("enddate");
+		List<Transaction> t = new ArrayList<Transaction>();
+		return transactionRepository.findTransactionByDatum(new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
+				new SimpleDateFormat("yyyy-MM-dd").parse(enddatum));
+	}
 	public String  getTransactionSum(Map<String,String> params) {
 		String startdatum=params.get("startdate");
 		String enddatum=params.get("enddate");
