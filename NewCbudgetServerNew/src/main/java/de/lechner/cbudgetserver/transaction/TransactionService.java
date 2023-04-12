@@ -15,12 +15,9 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.server.ResponseStatusException;
 
-import de.lechner.cbudgetserver.QueryBuilder.BuildQueryForTransaction;
+import de.lechner.cbudgetserver.queryBuilder.BuildQueryForTransaction;
 import de.lechner.cbudgetserver.transactionhistory.TransactionHistory;
 import de.lechner.cbudgetserver.transactionhistory.TransactionHistoryService;
 

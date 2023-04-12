@@ -1,6 +1,4 @@
-package de.lechner.cbudgetserver.QueryBuilder;
-
-import java.util.List;
+package de.lechner.cbudgetserver.queryBuilder;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
