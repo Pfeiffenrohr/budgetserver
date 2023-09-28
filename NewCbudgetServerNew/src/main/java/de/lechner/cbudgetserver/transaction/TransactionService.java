@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -182,8 +182,9 @@ public class TransactionService {
 	
 	   
     Specification<Transaction> specErtrag = new Specification<Transaction>() {
+
         @Override
-        public Predicate toPredicate(Root<Transaction> entity, CriteriaQuery<?> query, CriteriaBuilder cb) {                
+        public Predicate toPredicate(Root<Transaction> entity, CriteriaQuery<?> query, CriteriaBuilder cb) {
             List<Predicate> conditions = ertragPredicate(cb, entity);
             return cb.and(conditions.toArray(new Predicate[conditions.size()]));
         }
