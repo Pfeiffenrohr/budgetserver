@@ -25,7 +25,6 @@ public class NewCbudgetServerNewApplication {
 				.select()
 				.paths(PathSelectors.ant("/*"))
 				.apis(RequestHandlerSelectors.basePackage("de.lechner"))
-						
 				.build());
 	}
 
