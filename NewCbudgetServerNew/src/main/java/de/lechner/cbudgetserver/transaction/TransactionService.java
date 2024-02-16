@@ -71,6 +71,16 @@ public class TransactionService {
 		return transactionRepository.findTransactionByDatum(new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
 				new SimpleDateFormat("yyyy-MM-dd").parse(enddatum));
 	}
+
+	public List <Transaction> getTransactionWithDateAndCategorie (Map<String,String> params) throws ParseException {
+		String startdatum=params.get("startdate");
+		String enddatum=params.get("enddate");
+		String category=params.get("category");
+		List<Transaction> t = new ArrayList<Transaction>();
+		return transactionRepository.findTransactionByDatumAndCategory(new SimpleDateFormat("yyyy-MM-dd").parse(startdatum),
+				new SimpleDateFormat("yyyy-MM-dd").parse(enddatum), Integer.valueOf(category));
+	}
+
 	public String  getTransactionSum(Map<String,String> params) {
 		String startdatum=params.get("startdate");
 		String enddatum=params.get("enddate");

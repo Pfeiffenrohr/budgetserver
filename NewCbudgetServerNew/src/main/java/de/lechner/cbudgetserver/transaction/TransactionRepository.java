@@ -31,7 +31,12 @@ public interface TransactionRepository extends CrudRepository<Transaction, Integ
 	@Query(value= "select * from transaktionen where (datum >=:startdatum and datum <=:enddatum)" ,nativeQuery = true )
 	//@Query(value= "select sum(wert) as w from transaktionen where (datum >=:startdatum and datum <=:enddatum);
 	List <Transaction> findTransactionByDatum (@Param("startdatum") Date startdatum,@Param("enddatum") Date enddatum);
-	
+
+	@Query(value= "select * from transaktionen where (datum >=:startdatum and datum <=:enddatum) and kategorie=:kategorie" ,nativeQuery = true )
+		//@Query(value= "select sum(wert) as w from transaktionen where (datum >=:startdatum and datum <=:enddatum);
+	List <Transaction> findTransactionByDatumAndCategory (@Param("startdatum") Date startdatum,@Param("enddatum") Date enddatum,@Param("kategorie") Integer category);
+
+
 	List<Transaction> findByKategorie(Integer kategorie);
 		     
 }
