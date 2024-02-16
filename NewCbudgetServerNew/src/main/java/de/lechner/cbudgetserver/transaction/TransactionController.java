@@ -41,6 +41,15 @@ public class TransactionController {
 		return  result;
 		//return "Parameters are " + allParams.entrySet();
 	}
+
+	@RequestMapping("/transactionWithDateAndCategory")
+	@ResponseBody
+	public List <Transaction> getTransactionWithDateAndCategory(@RequestParam Map<String,String> allParams) throws ParseException {
+		List <Transaction> result= transactionservice.getTransactionWithDateAndCategorie(allParams);
+		// System.out.println("Result = " +result);
+		return  result;
+		//return "Parameters are " + allParams.entrySet();
+	}
 	@GetMapping(value = "/transaction_allErtrag")
 	    public List <Transaction> getFiltered() {
 	          return transactionservice.getAllErtrag();
