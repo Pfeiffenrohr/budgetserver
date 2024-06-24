@@ -21,7 +21,8 @@ public class Categorie {
 	private Integer inflation;
 	
 	
-	
+
+
 	public Categorie(Integer id, String name, String parent, String description, Double limit_month, Double limit_year, String mode,
 			Integer active, Integer forecast, Integer inflation) {
 		super();
