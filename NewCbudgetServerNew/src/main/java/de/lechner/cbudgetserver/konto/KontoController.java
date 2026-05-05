@@ -63,15 +63,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 	         }   
 		 }
 
-		@RequestMapping("/kontoByAnlageart/{name}")
-		public ResponseEntity<Integer> getkontobyMode(@PathVariable("name") String name) {
-			List <Konto> kontos= kontoservice.getKontoByMode(name);
-			{
-				return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
-			}
+		@RequestMapping("/kontoByAnlageart/{mode}")
+		public List <Konto> getKontoByAnlageart(@PathVariable("mode") String mode) {
+			return kontoservice.getKontoByMode(mode);
 		}
-		 
-		 
 		 
 		 @RequestMapping(method=RequestMethod.POST, value="/kontos")
 		 public void addKonto(@RequestBody Konto konto) {
