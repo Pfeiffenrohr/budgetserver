@@ -11,7 +11,7 @@ public interface KontoRepository extends CrudRepository<Konto, Integer> {
 	@Query(value= "select id from konten where kontoname =:name limit 1",nativeQuery = true)
 	Integer  findByName(@Param("name") String name);
 
-	@Query(value= "select id from konten where mode =:mode ",nativeQuery = true)
+	@Query(value = "SELECT * FROM konten WHERE mode = :mode", nativeQuery = true)
 	List<Konto> findByMode(@Param("mode") String mode);
 
 	}
