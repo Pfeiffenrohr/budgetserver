@@ -65,12 +65,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 		@RequestMapping("/kontoByAnlageart/{name}")
 		public ResponseEntity<Integer> getkontobyMode(@PathVariable("name") String name) {
-			Integer id= kontoservice.getKontoByMode(name);
-			if ( id != null)
-			{
-				return new ResponseEntity<>(id, HttpStatus.CREATED);
-			}
-			else
+			List <Konto> kontos= kontoservice.getKontoByMode(name);
 			{
 				return new ResponseEntity<>(0, HttpStatus.NOT_FOUND);
 			}
