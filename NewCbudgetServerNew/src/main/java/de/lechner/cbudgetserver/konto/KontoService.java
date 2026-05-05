@@ -32,7 +32,7 @@ package de.lechner.cbudgetserver.konto;
 		public Integer getKontoByName(String name) {
 			return  KontoRepository.findByName((name));
 		}
-		public Integer getKontoByMode(String mode) {
+		public List <Konto> getKontoByMode(String mode) {
 			return  KontoRepository.findByMode((mode));
 		}
 		
